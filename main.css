@@ -11,7 +11,7 @@ html, body{
 
 header{
     
-    background-color: rgb(97, 245, 100);
+    background-color: rgb(52, 152, 160);
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -56,24 +56,32 @@ header{
     width: 100%;
   }
 
-  .sobre{
+.conteudo-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.textos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sobre, .sobre1 {
     color: white;
-    background-color: rgb(97, 245, 100);
+    background-color: rgb(52, 152, 160);
     text-align: center;
     font-family: Montserrat;
-    width: 700px; /*largura*/
-    height: 260px;
-    padding: 20px; /*espaço interno*/
-    margin: 20px; /*espaço externo*/
-    border-radius: 10px; /*cantos arredondados*/
-    float: left; /*alinha à esquerda*/
-    
-  }
-
-.img{
-    float: right;
-    border-radius: 10px;
-    margin: 20px;
     width: 700px;
-    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.img {
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 700px;
+    height: 452px;
 }
