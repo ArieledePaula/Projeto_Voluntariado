@@ -21,9 +21,9 @@
     <div class="container1">
     <form>
       <h1 style="text-align: center;">Cadastro de Necessidades</h1>
-      <label for="nomeIst">Nome da Instituição</label>
-      <input type="text" id="nomeIst" placeholder="Digite o Nome">
-      <label for="tipoAj">Tipo de Ajuda</label>
+      <label for="nomeIst">Nome da Instituição<span style="color:red;">*</span></label>
+      <input type="text" id="nomeIst" placeholder="Digite o Nome" required>
+      <label for="tipoAj">Tipo de Ajuda<span style="color:red;">*</span></label>
       <select name="" id="" class="form-select">
         <option selected>Selecione o tipo de ajuda</option>
         <option value="">Educação</option>
@@ -33,27 +33,27 @@
         <option value="">Doação de Roupas</option>
         <option value="">Outros</option>
       </select>
-      <label for="tipoNec">Tipo de Necessidade</label>
+      <label for="tipoNec">Tipo de Necessidade<span style="color:red;">*</span></label>
       <input type="text" id="tipoNec" placeholder="Descreva o tipo de Necessidade">
-      <label for="descricao">Descrição da Necessidade</label>
+      <label for="descricao">Descrição da Necessidade<span style="color:red;">*</span></label>
       <textarea id="descricao" name="descricao" placeholder="Descreva a necessidade detalhadamente" rows="5"></textarea>
-      <label for="cep">CEP</label>
+      <label for="cep">CEP<span style="color:red;">*</span></label>
       <input type="text" id="cep" placeholder="CEP">
-      <label for="cidade">Cidade</label>
+      <label for="cidade">Cidade<span style="color:red;">*</span></label>
       <input type="text" id="cidade" placeholder="Digite a Cidade">
-      <label for="estado">Estado</label>
+      <label for="estado">Estado<span style="color:red;">*</span></label>
       <input type="text" id="estado" placeholder="Digite o Estado">
-      <label for="rua">Rua</label>
+      <label for="rua">Rua<span style="color:red;">*</span></label>
       <input type="text" id="rua" placeholder="Digite a Rua">
-      <label for="bairro">Bairro</label>
+      <label for="bairro">Bairro<span style="color:red;">*</span></label>
       <input type="text" id="bairro" placeholder="Digite o Bairro">
-      <label for="numero">Número</label>
+      <label for="numero">Número<span style="color:red;">*</span></label>
       <input type="text" id="numero" placeholder="Digite o Número">
-      <label for="email">E-mail</label>
+      <label for="email">E-mail<span style="color:red;">*</span></label>
       <input type="text" id="email" placeholder="Digiteo E-mail para contato">
-      <label for="celular">Celular</label>
+      <label for="celular">Celular<span style="color:red;">*</span></label>
       <input type="text" id="celular" placeholder="Digite o Celular para contato">
-      <button type="button" onclick="cadastrar()">Cadastrar</button>
+      <button type="button" onclick="Cadastrar()">Cadastrar</button>
     </form>
   </div>
      <script src='main.js'></script>
