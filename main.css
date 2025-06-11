@@ -137,3 +137,16 @@ button {
 button:hover {
   background-color: rgb(84, 177, 184);
 }
+
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical; 
+}
