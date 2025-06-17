@@ -6,6 +6,7 @@ function Cadastrar() {
 
   let formularioValido = true;
 
+  //Campos preenchidos
   camposObrigatorios.forEach(id => {
     const campo = document.getElementById(id);
     if (!campo || campo.value.trim() === "") {
@@ -24,6 +25,7 @@ function Cadastrar() {
     selectAjuda.style.border = "1px solid #ccc";
   }
 
+ //Email
   const email = document.getElementById("email").value.trim();
   const confirmaEmail = document.getElementById("confirmaEmail").value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,6 +40,18 @@ function Cadastrar() {
     formularioValido = false;
   }
 
+  //Celular
+  const celular = document.getElementById("celular").value.trim().replace(/\D/g, "");
+  const celularRegex = /^(\d{2})(9\d{8})$/; 
+
+  if (!celularRegex.test(celular)) {
+    alert("Número de celular inválido");
+    document.getElementById("celular").style.border = "2px solid red";
+    formularioValido = false;
+  } else {
+    document.getElementById("celular").style.border = "1px solid #ccc";
+  }
+
   if (!formularioValido) {
     alert("Por favor, preencha os campos com *.");
     return;
@@ -46,7 +60,7 @@ function Cadastrar() {
   alert("Formulário validado com sucesso!");
 }
 
-
+//CEP
 'use strict'; 
 const eNumero = (numero) => /^[0-9]+$/.test(numero);
 const cepValido = (cep) => cep.length == 8 && eNumero(cep);
@@ -80,3 +94,7 @@ const limparFormulario = () =>{
     document.getElementById('estado').value = '';
 }
 document.getElementById('cep').addEventListener('focusout',pesquisarCep);
+
+
+
+
