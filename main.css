@@ -103,7 +103,7 @@ form {
   max-width: 800px;
   padding: 30px;
   color: black;
-  background-color: #ffffff;
+  background-color: rgb(152, 202, 210);
   border-radius: 10px;
   border: 1px solid #ddd;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
