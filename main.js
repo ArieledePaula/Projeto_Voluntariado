@@ -1,7 +1,7 @@
 function Cadastrar() {
   const camposObrigatorios = [
     "nomeIst", "tipoNec", "descricao", "cep", "cidade", "estado",
-    "rua", "bairro", "numero", "email", "celular"
+    "rua", "bairro", "numero", "email", "confirmaEmail", "celular"
   ];
 
   let formularioValido = true;
@@ -24,13 +24,28 @@ function Cadastrar() {
     selectAjuda.style.border = "1px solid #ccc";
   }
 
+  const email = document.getElementById("email").value.trim();
+  const confirmaEmail = document.getElementById("confirmaEmail").value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    alert("E-mail inválido.");
+    formularioValido = false;
+  }
+
+  if (email !== confirmaEmail) {
+    alert("Os e-mails digitados não são iguais.");
+    formularioValido = false;
+  }
+
   if (!formularioValido) {
-    alert("Por favor, preencha todos os campos marcados com * ");
+    alert("Por favor, preencha os campos com *.");
     return;
   }
 
   alert("Formulário validado com sucesso!");
 }
+
 
 'use strict'; 
 const eNumero = (numero) => /^[0-9]+$/.test(numero);
@@ -64,4 +79,4 @@ const limparFormulario = () =>{
     document.getElementById('cidade').value = '';
     document.getElementById('estado').value = '';
 }
-document.getElementById('cep').addEventListener('focusout',pesquisarCep);//evento
+document.getElementById('cep').addEventListener('focusout',pesquisarCep);
