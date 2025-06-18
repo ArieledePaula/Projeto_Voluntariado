@@ -1,14 +1,16 @@
-html, body{
-    margin:0;
-    padding: 0;
-    background-color: #ffffff;
-    color: #f4faf4;
-    font-family: Montserrat;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    flex-direction: column;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #f4faf4;
+  font-family: Montserrat;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;            
+  flex-direction: column;  
 }
+
 
 header{
     
@@ -58,11 +60,13 @@ header{
   }
 
 .conteudo-principal {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin: 20px;
+  flex: 1; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
 }
+
 
 .textos {
     display: flex;
@@ -158,6 +162,7 @@ textarea {
   color: white;
   text-align: center;
   padding: 10px;
+ 
 }
 
 .formvi{
@@ -231,4 +236,11 @@ textarea {
   border-radius: 5px;
   font-size: 0.95em;
 }
+
+main.formvi {
+  flex: 1; 
+}
+
+
+
 
