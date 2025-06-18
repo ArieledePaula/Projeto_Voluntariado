@@ -44,7 +44,7 @@ function Cadastrar() {
     alert("Os e-mails digitados não são iguais.");
     formularioValido = false;
   }
- //Celular
+  //Celular
   const celular = document.getElementById("celular").value.trim().replace(/\D/g, "");
   const celularRegex = /^(\d{2})(9\d{8})$/;
 
@@ -81,6 +81,8 @@ function Cadastrar() {
 
   alert("Cadastro concluído!");
   document.querySelector("form").reset();
+
+  atualizarLista(); // Atualiza a lista após novo cadastro
 }
 
 //CEP
@@ -126,29 +128,70 @@ if (campoCep) {
   campoCep.addEventListener("focusout", pesquisarCep);
 }
 
-//Lista Necessidades
-window.addEventListener("DOMContentLoaded", () => {
+//Excluir necessidade
+function excluirNecessidade(index) {
+  necessidades.splice(index, 1);
+  localStorage.setItem("necessidades", JSON.stringify(necessidades));
+  atualizarLista();
+}
+
+//atualiza lista de necessidades/cria cards/botão excluir
+function atualizarLista() {
   const container = document.getElementById("listaNecessidades");
-  if (container) {
-    if (necessidades.length === 0) {
-      container.innerHTML = "<p>Nenhuma necessidade cadastrada.</p>";
-    } else {
-      container.innerHTML = "";
-      necessidades.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "card";
-        div.innerHTML = `
-          <strong>${item.nomeInstituicao}</strong><br>
-          <b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
-          <b>Tipo de necessidade:</b> ${item.tipoNecessidade}<br>
+  if (!container) return;
+
+  if (necessidades.length === 0) {
+    container.innerHTML = "<p>Nenhuma necessidade cadastrada.</p>";
+  } else {
+    container.innerHTML = "";
+    necessidades.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <b>Tipo de ajuda:</b>
+        ${item.tipoNecessidade}<br>
+        <b>Instituição:</b> ${item.nomeInstituicao}<br>
+        <b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
+        <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
+        <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
           <b>Descrição:</b> ${item.descricao}<br>
           <b>Endereço:</b> ${item.rua}, ${item.numero}, ${item.bairro}, ${item.cidade} - ${item.estado}<br>
           <b>CEP:</b> ${item.cep}<br>
           <b>E-mail:</b> ${item.email}<br>
-          <b>Celular:</b> ${item.celular}
-        `;
-        container.appendChild(div);
+          <b>Celular:</b> ${item.celular}<br>
+          <button class="btnExcluir" data-index="${index}">Excluir</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    // Botões de "Saiba mais"
+    const botoesSaibaMais = container.querySelectorAll(".btnSaibaMais");
+    botoesSaibaMais.forEach(botao => {
+      botao.addEventListener("click", (event) => {
+        const idx = event.target.getAttribute("data-index");
+        const detalhesDiv = document.getElementById(`detalhes-${idx}`);
+        if (detalhesDiv.style.display === "none") {
+          detalhesDiv.style.display = "block";
+          botao.textContent = "Mostrar menos";
+        } else {
+          detalhesDiv.style.display = "none";
+          botao.textContent = "Saiba mais";
+        }
       });
-    }
+    });
+
+    // Botão excluir
+    const botoesExcluir = container.querySelectorAll(".btnExcluir");
+    botoesExcluir.forEach(botao => {
+      botao.addEventListener("click", (event) => {
+        const idx = event.target.getAttribute("data-index");
+        excluirNecessidade(idx);
+      });
+    });
   }
-});
+}
+
+if (document.getElementById("listaNecessidades")) {
+  atualizarLista();
+}
