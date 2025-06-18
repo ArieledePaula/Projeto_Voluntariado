@@ -164,3 +164,45 @@ textarea {
   background-color: white;
   color: black;
 }
+
+
+#listaNecessidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 20px;
+  width: 300px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card strong {
+  font-size: 1.25em;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.card b {
+  color: #34495e;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.3;
+}
