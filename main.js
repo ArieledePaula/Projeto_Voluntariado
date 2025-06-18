@@ -22,13 +22,14 @@ function Cadastrar() {
     }
   });
 
-  const selectAjuda = document.querySelector("select");
-  if (!selectAjuda || selectAjuda.selectedIndex === 0) {
-    selectAjuda.style.border = "2px solid red";
-    formularioValido = false;
-  } else {
-    selectAjuda.style.border = "1px solid #ccc";
-  }
+  const selectAjuda = document.getElementById("tipoAj");
+    if (!selectAjuda || selectAjuda.value === "") {
+      selectAjuda.style.border = "2px solid red";
+      formularioValido = false;
+    } else {
+      selectAjuda.style.border = "1px solid #ccc";
+    }
+
 
   //Email
   const email = document.getElementById("email").value.trim();
@@ -63,7 +64,7 @@ function Cadastrar() {
 
   const novaNecessidade = {
     nomeInstituicao: document.getElementById("nomeIst").value.trim(),
-    tipoAjuda: selectAjuda.value,
+    tipoAjuda: selectAjuda.value.trim(),
     tipoNecessidade: document.getElementById("tipoNec").value.trim(),
     descricao: document.getElementById("descricao").value.trim(),
     cep: document.getElementById("cep").value.trim(),
@@ -151,7 +152,8 @@ function atualizarLista() {
         <b>Tipo de ajuda:</b>
         ${item.tipoNecessidade}<br>
         <b>Instituição:</b> ${item.nomeInstituicao}<br>
-        <b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
+        <b>Tipo de necessidade:</b>
+        ${item.tipoNecessidade}<br>
         <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
         <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
           <b>Descrição:</b> ${item.descricao}<br>
@@ -165,6 +167,7 @@ function atualizarLista() {
       container.appendChild(div);
     });
 
+    
     // Botões de "Saiba mais"
     const botoesSaibaMais = container.querySelectorAll(".btnSaibaMais");
     botoesSaibaMais.forEach(botao => {
@@ -195,3 +198,5 @@ function atualizarLista() {
 if (document.getElementById("listaNecessidades")) {
   atualizarLista();
 }
+
+
