@@ -20,10 +20,25 @@
     </header>
     <main class="formvi">
         <h2 style="text-align: center; color:rgb(0, 70, 100);">Necessidades Cadastradas</h2>  
-        <div class="input-wrapper">
-            <input type="text" id="searchInput" class="form-control mb-4" placeholder="Pesquisar por título ou descrição...">
-        </div>     
-        <div id="listaNecessidades"></div>
+    <div class="filtros-container">
+    <div class="filtro-bloco">
+    <label for="searchInput">Pesquisar por descrição:</label>
+    <input type="text" id="searchInput" class="form-control" placeholder="Digite aqui...">
+    </div>
+    <div class="filtro-bloco">
+    <label for="filtroAjuda">Filtrar por tipo de ajuda:</label>
+        <select id="filtroAjuda" class="form-control">
+            <option value="" selected>Selecione o tipo de ajuda</option>
+            <option value="Educação">Educação</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Meio Ambiente">Meio Ambiente</option>
+            <option value="Doação de Alimentos">Doação de Alimentos</option>
+            <option value="Doação de Roupas">Doação de Roupas</option>
+            <option value="Outros">Outros</option>
+        </select>
+    </div>
+    </div>
+    <div id="listaNecessidades"></div>
     </main>
     <script src="main.js"></script>
     <footer class="footer">
