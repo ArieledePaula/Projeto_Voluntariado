@@ -63,7 +63,7 @@ function Cadastrar() {
   }
 
   const novaNecessidade = {
-    nomeInstituicao: document.getElementById("nomeIst").value.trim(),
+    nome: document.getElementById("nomeIst").value.trim(),
     tipoAjuda: selectAjuda.value.trim(),
     tipoNecessidade: document.getElementById("tipoNec").value.trim(),
     descricao: document.getElementById("descricao").value.trim(),
@@ -150,8 +150,8 @@ function atualizarLista() {
       div.className = "card";
       div.innerHTML = `
         <b>Tipo de ajuda:</b>
-        ${item.tipoNecessidade}<br>
-        <b>Instituição:</b> ${item.nomeInstituicao}<br>
+        ${item.tipoAjuda}<br>
+        <b>Nome:</b> ${item.nome}<br>
         <b>Tipo de necessidade:</b>
         ${item.tipoNecessidade}<br>
         <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
@@ -163,8 +163,7 @@ function atualizarLista() {
           <b>Celular:</b> ${item.celular}<br>
           <button class="btnExcluir" data-index="${index}">Excluir</button>
         </div>
-      `;
-      container.appendChild(div);
+      `;      container.appendChild(div);
     });
 
     
@@ -199,4 +198,65 @@ if (document.getElementById("listaNecessidades")) {
   atualizarLista();
 }
 
+const searchInput = document.getElementById("searchInput");
 
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const termo = searchInput.value.toLowerCase();
+
+    const container = document.getElementById("listaNecessidades");
+    container.innerHTML = "";
+
+    const filtrados = necessidades.filter(n =>
+      n.nome.toLowerCase().includes(termo) ||
+      n.tipoNecessidade.toLowerCase().includes(termo) ||
+      n.descricao.toLowerCase().includes(termo)
+    );
+
+    if (filtrados.length === 0) {
+      container.innerHTML = "<p>Nenhuma necessidade encontrada.</p>";
+    } else {
+      filtrados.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `<b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
+          <b>Nome:</b> ${item.nome}<br>
+          <b>Tipo de necessidade:</b> ${item.tipoNecessidade}<br>
+          <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
+          <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
+            <b>Descrição:</b> ${item.descricao}<br>
+            <b>Endereço:</b> ${item.rua}, ${item.numero}, ${item.bairro}, ${item.cidade} - ${item.estado}<br>
+            <b>CEP:</b> ${item.cep}<br>
+            <b>E-mail:</b> ${item.email}<br>
+            <b>Celular:</b> ${item.celular}<br>
+            <button class="btnExcluir" data-index="${index}">Excluir</button>
+          </div>
+        `;        container.appendChild(div);
+      });
+
+      // Reaplicar os eventos nos botões filtrados
+      const botoesSaibaMais = container.querySelectorAll(".btnSaibaMais");
+      botoesSaibaMais.forEach(botao => {
+        botao.addEventListener("click", (event) => {
+          const idx = event.target.getAttribute("data-index");
+          const detalhesDiv = document.getElementById(`detalhes-${idx}`);
+          if (detalhesDiv.style.display === "none") {
+            detalhesDiv.style.display = "block";
+            botao.textContent = "Mostrar menos";
+          } else {
+            detalhesDiv.style.display = "none";
+            botao.textContent = "Saiba mais";
+          }
+        });
+      });
+
+      const botoesExcluir = container.querySelectorAll(".btnExcluir");
+      botoesExcluir.forEach(botao => {
+        botao.addEventListener("click", (event) => {
+          const idx = event.target.getAttribute("data-index");
+          excluirNecessidade(idx);
+        });
+      });
+    }
+  });
+}
