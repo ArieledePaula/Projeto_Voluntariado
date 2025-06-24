@@ -149,11 +149,11 @@ function atualizarLista() {
       const div = document.createElement("div");
       div.className = "card";
       div.innerHTML = `
+      <b>Título:</b>
+        ${item.tipoNecessidade}<br>
         <b>Tipo de ajuda:</b>
         ${item.tipoAjuda}<br>
         <b>Nome:</b> ${item.nome}<br>
-        <b>Tipo de necessidade:</b>
-        ${item.tipoNecessidade}<br>
         <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
         <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
           <b>Descrição:</b> ${item.descricao}<br>
@@ -219,9 +219,10 @@ if (searchInput) {
       filtrados.forEach((item, index) => {
         const div = document.createElement("div");
         div.className = "card";
-        div.innerHTML = `<b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
+        div.innerHTML = `
+        <b>Título:</b> ${item.tipoNecessidade}<br>
+        <b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
           <b>Nome:</b> ${item.nome}<br>
-          <b>Tipo de necessidade:</b> ${item.tipoNecessidade}<br>
           <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
           <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
             <b>Descrição:</b> ${item.descricao}<br>
@@ -292,9 +293,9 @@ function aplicarFiltros() {
       const div = document.createElement("div");
       div.className = "card";
       div.innerHTML = `
+      <b>Título:</b> ${item.tipoNecessidade}<br>
         <b>Tipo de ajuda:</b> ${item.tipoAjuda}<br>
         <b>Nome:</b> ${item.nome}<br>
-        <b>Tipo de necessidade:</b> ${item.tipoNecessidade}<br>
         <button class="btnSaibaMais" data-index="${index}">Saiba mais</button>
         <div class="detalhes" id="detalhes-${index}" style="display: none; margin-top: 10px;">
           <b>Descrição:</b> ${item.descricao}<br>
