@@ -62,4 +62,7 @@
 # Esse projeto foi realizado utilizando o Github, para melhor visualização das páginas
 https://arieledepaula.github.io/Projeto_Voluntariado/
 
+# Segue um vídeo para a visualização das páginas e suas funcionalidades
+https://github.com/user-attachments/assets/60ce2e27-a892-4513-9c78-5beb0bec5e00
+
 
