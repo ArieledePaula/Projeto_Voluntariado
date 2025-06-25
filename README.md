@@ -25,8 +25,8 @@
 ### Logo Integrado: A imagem de uma casa, projetada para se alinhar com o título "Ajude seu Vizinho".
 
 ## Página de Cadastro de Necessidade (cadastro.html)
-- Formulário Abrangente: Campos para cadastro de:
-- Nome da Instituição/Pessoa
+* Formulário Abrangente: Campos para cadastro de:
+* Nome da Instituição/Pessoa
 ### Tipo de Ajuda (seleção com opções como Educação, Saúde, Doação de Alimentos, etc.)
 ### Tipo de Necessidade (descrição breve)
 ### Descrição Detalhada da Necessidade
